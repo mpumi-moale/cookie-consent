@@ -1,7 +1,7 @@
 const modal = document.getElementById('modal')
 const modalCloseBtnEl = document.getElementById('modal-close-btn')
 const consentForm = document.getElementById('consent-form')
-const modelText = document.getElementById('modal-text')
+const modalText = document.getElementById('modal-text')
 
 
 // modal pop up
@@ -18,22 +18,22 @@ modalCloseBtnEl.addEventListener('click', function() {
 // submit form
 consentForm.addEventListener('submit', function(e){
     e.preventDefault()
-    modelText.innerHTML = `
+    modalText.innerHTML = `
     <div class="modal-inner-loading">
         <img src="./src/assets/loading.svg" class="loading">
-        <p id="uploadText">
-            Uploading your data to the dark web...
-        </p>
+        <p id="upload-text">Uploading your data to the dark web...</p>
     </div>`
+    setTimeout(function(){
+        const uploadText = document.getElementById('upload-text')
+        uploadText.innerHTML = `Making the sale...`
+    }, 1500) 
+  
+/*   
+Challenge: 
+1. Use a setTimeout to make the phrase "Uploading
+   your data to the dark web" change to "Making the 
+   sale..." after 1.5 seconds.
+⚠️ Do not change the loading svg!
+*/   
 
-    setTimeout(function() {
-      modelText.innerHTML = `
-      <div class="modal-inner-loading">
-        <img src="./src/assets/loading.svg" class="loading">
-        <p id="uploadText">
-            Making the sale...
-        </p>
-    </div>
-      `
-    }, 1500)
 })
