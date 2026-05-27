@@ -14,6 +14,7 @@ modalCloseBtnEl.addEventListener('click', function() {
   modal.style.display = 'none'
 })
 
+// submit form
 consentForm.addEventListener('submit', function(e){
     e.preventDefault()
     console.log('form submitted')
