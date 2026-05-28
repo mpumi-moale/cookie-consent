@@ -18,7 +18,7 @@ modalCloseBtn.addEventListener('click', function() {
 })
 
 // submit form
-consentForm.addEventListener('submit', function(e){
+consentForm.addEventListener('submit', function(e) {
     e.preventDefault()
 
     const consentFormData = new FormData(consentForm)
@@ -32,12 +32,12 @@ consentForm.addEventListener('submit', function(e){
     </div>`
 
     // changed text upload
-    setTimeout(function(){
+    setTimeout(function() {
         document.getElementById('upload-text').innerText = `Making the sale...`
     }, 1500)   
 
     
-    setTimeout(function(){
+    setTimeout(function() {
         document.getElementById('modal-inner').innerHTML = `
         <h2>Thanks <span class="modal-display-name">${fullName}</span>, you sucker! </h2>
         <p>We just sold the rights to your eternal soul.</p>
