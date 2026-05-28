@@ -1,5 +1,5 @@
 const modal = document.getElementById('modal')
-const modalCloseBtnEl = document.getElementById('modal-close-btn')
+const modalCloseBtn = document.getElementById('modal-close-btn')
 const consentForm = document.getElementById('consent-form')
 const modalText = document.getElementById('modal-text')
 const modalInner = document.getElementById('modal-inner')
@@ -8,17 +8,21 @@ const modalInner = document.getElementById('modal-inner')
 // modal pop up
 setTimeout(function() {
   modal.style.display = 'inline'
+  modalCloseBtn.disabled = true
 }, 1500)
 
 
 // close the modal pop up
-modalCloseBtnEl.addEventListener('click', function() {
+modalCloseBtn.addEventListener('click', function() {
   modal.style.display = 'none'
 })
 
 // submit form
 consentForm.addEventListener('submit', function(e){
     e.preventDefault()
+
+    const consentFormData = new FormData(consentForm)
+    const fullName = consentFormData.get('fullName')
 
     // show upload image
     modalText.innerHTML = `
@@ -32,15 +36,16 @@ consentForm.addEventListener('submit', function(e){
         document.getElementById('upload-text').innerText = `Making the sale...`
     }, 1500)   
 
+    
     setTimeout(function(){
-        modalInner.innerHTML = `
-        <h2>Thanks you sucker! </h2>
-          <p>We just sold the rights to your eternal soul.</p>
-          <div class="idiot-gif">
-              <img src="images/pirate.gif">
+        document.getElementById('modal-inner').innerHTML = `
+        <h2>Thanks <span class="modal-display-name">${fullName}</span>, you sucker! </h2>
+        <p>We just sold the rights to your eternal soul.</p>
+        <div class="idiot-gif">
+            <img src="images/pirate.gif">
         </div>
-        
-        `
+    `
+    modalCloseBtn.disabled = false
     }, 3000)
 
 
